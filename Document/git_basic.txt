@@ -1,0 +1,11 @@
+1. init 
+	git init
+2. add file then check status
+	git status
+3. add file to unstaging
+	git add
+4. commit, -a is used for "add" all changes for all known files and "rm" files in the index that have been removed from the working tree.
+	git commit -a -m 'words for log'
+
+5. push to remote
+	git push remote_alias local_branch
