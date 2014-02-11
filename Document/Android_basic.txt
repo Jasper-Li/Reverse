@@ -1,0 +1,8 @@
+1. Words pronunciation
+	(1) Android /ˈænˌdrɔɪd /
+	(2) Dalvik /'dɔlvik/
+	(3) grep ['grep]
+	(4) github [ ɡɪt'hʌb]
+
+	(5) dedex /di'deks/
+	(6) smali /sma:li:/

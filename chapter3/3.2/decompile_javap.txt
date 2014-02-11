@@ -1,0 +1,35 @@
+Compiled from "Hello.java"
+public class Hello extends java.lang.Object{
+public Hello();
+  Code:
+   0:	aload_0
+   1:	invokespecial	#1; //Method java/lang/Object."<init>":()V
+   4:	return
+
+public int foo(int, int);
+  Code:
+   0:	iload_1
+   1:	iload_2
+   2:	iadd
+   3:	iload_1
+   4:	iload_2
+   5:	isub
+   6:	imul
+   7:	ireturn
+
+public static void main(java.lang.String[]);
+  Code:
+   0:	new	#2; //class Hello
+   3:	dup
+   4:	invokespecial	#3; //Method "<init>":()V
+   7:	astore_1
+   8:	getstatic	#4; //Field java/lang/System.out:Ljava/io/PrintStream;
+   11:	aload_1
+   12:	iconst_5
+   13:	iconst_3
+   14:	invokevirtual	#5; //Method foo:(II)I
+   17:	invokevirtual	#6; //Method java/io/PrintStream.println:(I)V
+   20:	return
+
+}
+
