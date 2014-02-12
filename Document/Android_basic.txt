@@ -6,3 +6,8 @@
 
 	(5) dedex /di'deks/
 	(6) smali /sma:li:/
+
+2.  command line
+	(1) open ¡° AVD manager ¡± : $ android avd
+	(2) use emulator from ¡°android4.3¡± of a AVD : $ emulator -avd adnroid4.3
+	(3) adb uninstall the apk : $ adb uninstall com.example.reverse2_1
