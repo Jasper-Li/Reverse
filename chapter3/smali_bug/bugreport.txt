@@ -1,3 +1,16 @@
+notes: issue is solved. Author's discription is below.
+
+And yes, the .parameter directives that 1.4.0 output in that case conveyed no meaning. In 2.* I tightened up the logic for when a .param directive is generated, so that they don't get generated in cases like these, where they contain no information.
+
+In general, the .param directive is used to specify a parameter name and/or any annotations associated with the parameter. If there is no name or annotations for a parameter in the dex file, then baksmali 2.* won't output a .param directive.
+
+And yes, the .parameter directives that 1.4.0 output in that case conveyed no meaning. In 2.* I tightened up the logic for when a .param directive is generated, so that they don't get generated in cases like these, where they contain no information.
+
+In general, the .param directive is used to specify a parameter name and/or any annotations associated with the parameter. If there is no name or annotations for a parameter in the dex file, then baksmali 2.* won't output a .param directive.
+
+
+/** issue info is below **/
+
 1. run command 
 
  (1. javac Hello.java
