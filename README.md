@@ -1,9 +1,6 @@
 #### about
 This repository contains my learns for Android Reverse Engineering.
-I choose the book 
-> Android 软件安全与逆向分析 >
-to learn reverse engineering on Android. The book's information can be found on the website below.
-* http://www.ituring.com.cn/book/1131
+I choose the book [《Android 软件安全与逆向分析》](http://www.ituring.com.cn/book/1131)to learn reverse engineering on Android. 
 
 ####The content of repository
 1. ChapterXX : Source codes, execute bins etc. associated with that chapter.
