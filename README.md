@@ -4,7 +4,7 @@ I choose the book [《Android 软件安全与逆向分析》](http://www.ituring
 
 ####The content of repository
 1. ChapterXX : Source codes, execute bins etc. associated with that chapter.
-2. Document : My notes on reading the book.
+2. Document : My notes on reading the book. Some file format is created by LibreOffice.
 
 ####Some useful links for getting started on Android
 1. [Android Open Source Proeject](http://source.android.com/index.html)
