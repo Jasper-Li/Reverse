@@ -1,0 +1,60 @@
+/* 
+** bSuite default styles
+**
+** more information at http://maisonbisson.com/bsuite/
+*/
+
+/* the search word highlight */
+.highlight { 
+	background-color: #FFFF00;
+	padding: .2em;
+	border-top: 1px solid #FAFAD2;
+	border-right: 1px solid #FF8C00;
+	border-bottom: 1px solid #FF8C00;
+	border-left: 1px solid #FAFAD2;
+	-moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	color: black;
+}
+
+/* related posts */
+.bsuite_related h3 {
+	margin-top: 1em;
+	clear: both;
+}
+
+/* sharelinks */
+.bsuite_sharelinks h3 {
+	margin-top: 1em;
+	clear: both;
+}
+
+.bsuite_sharelinks ul {
+	margin:0 0 0 1em;
+}
+
+.bsuite_sharelinks ul li {
+	float: left;
+	list-style-image:none;
+	list-style-position:outside;
+	list-style-type:none;
+	margin:0 1em 0 0;
+}
+
+.bsuite_sharelinks ul li:before{
+	content: "";
+}
+
+.bsuite_sharelinks input {
+	width: 10em;
+}
+
+.bsuite_sharelinks .bsuite_share_bsuitetag {
+	padding: 1em 0 1em 0;
+	clear: both;
+	text-align: right;
+	font-family:"lucida grande", verdana, arial, sans-serif;
+	font-size: .6em
+}
