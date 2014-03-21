@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)http://www.aircrack-ng.org/doku.php?id=airmon-ng -->
+<html lang="en" dir="ltr" class="js desktop"><script type="text/javascript" src="chrome-extension://khbjahpecnkenngkidhioicnfpakihgo/iframe_raw.js"></script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
+    <title>airmon-ng [Aircrack-ng]</title>
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+    <meta name="generator" content="DokuWiki">
+<meta name="robots" content="index,follow">
+<meta name="date" content="2010-10-31T16:25:36+0100">
+<meta name="keywords" content="airmon-ng">
+<link rel="search" type="application/opensearchdescription+xml" href="http://www.aircrack-ng.org/lib/exe/opensearch.php" title="Aircrack-ng">
+<link rel="start" href="http://www.aircrack-ng.org/">
+<link rel="contents" href="http://www.aircrack-ng.org/doku.php?id=airmon-ng&do=index" title="Sitemap">
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="http://www.aircrack-ng.org/feed.php">
+<link rel="alternate" type="application/rss+xml" title="Current Namespace" href="http://www.aircrack-ng.org/feed.php?mode=list&ns=">
+<link rel="alternate" type="text/html" title="Plain HTML" href="http://www.aircrack-ng.org/doku.php?do=export_xhtml&id=airmon-ng">
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="http://www.aircrack-ng.org/doku.php?do=export_raw&id=airmon-ng">
+<link rel="canonical" href="./airmon-ng [Aircrack-ng]_files/airmon-ng [Aircrack-ng].html">
+<link rel="stylesheet" type="text/css" href="./airmon-ng [Aircrack-ng]_files/css.php">
+<script type="text/javascript">/*<![CDATA[*/var NS='';var JSINFO = {"id":"airmon-ng","namespace":""};
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="./airmon-ng [Aircrack-ng]_files/js.php"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="shortcut icon" href="http://www.aircrack-ng.org/lib/tpl/dokuwiki/images/favicon.ico">
+<link rel="apple-touch-icon" href="http://www.aircrack-ng.org/lib/tpl/dokuwiki/images/apple-touch-icon.png">
+    <style type="text/css"></style></head>
+
+<body>
+    <!--[if lte IE 7 ]><div id="IE7"><![endif]--><!--[if IE 8 ]><div id="IE8"><![endif]-->
+    <div id="dokuwiki__site"><div id="dokuwiki__top" class="dokuwiki site mode_show  ">
+
+        
+<!-- ********** HEADER ********** -->
+<div id="dokuwiki__header"><div class="pad group">
+
+    
+    <div class="headings group">
+        <ul class="a11y skip">
+            <li><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng#dokuwiki__content">skip to content</a></li>
+        </ul>
+
+        <h1><a href="http://www.aircrack-ng.org/doku.php?id=Main" accesskey="h" title="[H]"><img src="./airmon-ng [Aircrack-ng]_files/logo.png" width="64" height="64" alt=""> <span>Aircrack-ng</span></a></h1>
+            </div>
+
+    <div class="tools group">
+        <!-- USER TOOLS -->
+                    <div id="dokuwiki__usertools">
+                <h3 class="a11y">User Tools</h3>
+                <ul>
+                    <li><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng&do=login&sectok=261181da5a9e9ae15824469b360581ea" class="action login" rel="nofollow" title="Login">Login</a></li>                </ul>
+            </div>
+        
+        <!-- SITE TOOLS -->
+        <div id="dokuwiki__sitetools">
+            <h3 class="a11y">Site Tools</h3>
+            <form action="http://www.aircrack-ng.org/doku.php?id=Main" accept-charset="utf-8" class="search" id="dw__search" method="get"><div class="no"><input type="hidden" name="do" value="search"><input type="text" id="qsearch__in" accesskey="f" name="id" class="edit" title="[F]"><input type="submit" value="Search" class="button" title="Search"><div id="qsearch__out" class="ajax_qsearch JSpopup" style="display: none;"></div></div></form>            <div class="mobileTools">
+                <form action="http://www.aircrack-ng.org/doku.php" method="post" accept-charset="utf-8"><div class="no"><input type="hidden" name="id" value="airmon-ng"><input type="hidden" name="sectok" value="261181da5a9e9ae15824469b360581ea"><select name="do" class="edit quickselect" title="Tools"><option value="">Tools</option><optgroup label="Page Tools"><option value="edit">Show pagesource</option><option value="revisions">Old revisions</option><option value="backlink">Backlinks</option></optgroup><optgroup label="Site Tools"><option value="recent">Recent changes</option><option value="media">Media Manager</option><option value="index">Sitemap</option></optgroup><optgroup label="User Tools"><option value="login">Login</option></optgroup></select><input type="submit" value="&gt;" style="display: none;"></div></form>            </div>
+            <ul>
+                <li><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng&do=recent" class="action recent" accesskey="r" rel="nofollow" title="Recent changes [R]">Recent changes</a></li><li><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng&do=media" class="action media" rel="nofollow" title="Media Manager">Media Manager</a></li><li><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng&do=index" class="action index" accesskey="x" rel="nofollow" title="Sitemap [X]">Sitemap</a></li>            </ul>
+        </div>
+
+    </div>
+
+    <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                                        <div class="trace"><span class="bchead">Trace:</span> <span class="bcsep">•</span> <a href="http://www.aircrack-ng.org/doku.php?id=install_aircrack" class="breadcrumbs" title="install_aircrack">install_aircrack</a> <span class="bcsep">•</span> <a href="http://www.aircrack-ng.org/doku.php?id=airolib-ng" class="breadcrumbs" title="airolib-ng">airolib-ng</a> <span class="bcsep">•</span> <a href="http://www.aircrack-ng.org/doku.php?id=faq" class="breadcrumbs" title="faq">faq</a> <span class="bcsep">•</span> <span class="curid"><a href="./airmon-ng [Aircrack-ng]_files/airmon-ng [Aircrack-ng].html" class="breadcrumbs" title="airmon-ng">airmon-ng</a></span></div>
+                    </div>
+    
+    
+    <hr class="a11y">
+</div></div><!-- /header -->
+
+        <div class="wrapper group">
+
+            
+            <!-- ********** CONTENT ********** -->
+            <div id="dokuwiki__content"><div class="pad group">
+
+                <div class="pageId"><span>airmon-ng</span></div>
+
+                <div class="page group">
+                                                            <!-- wikipage start -->
+                    <!-- TOC START -->
+<div id="dw__toc">
+<h3 class="toggle open" style="cursor: pointer;"><strong><span>−</span></strong>Table of Contents</h3>
+<div style="">
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng#airmon-ng">Airmon-ng</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng#description">Description</a></div></li>
+<li class="level2"><div class="li"><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng#usage">Usage</a></div></li>
+<li class="level2"><div class="li"><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng#usage_examples">Usage Examples</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng#typical_uses">Typical Uses</a></div></li>
+<li class="level3"><div class="li"><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng#madwifi-ng_driver_monitor_mode">Madwifi-ng driver monitor mode</a></div></li>
+<li class="level3"><div class="li"><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng#mac80211_drivers_monitor_mode">mac80211 drivers monitor mode</a></div></li>
+</ul>
+</li>
+<li class="level2"><div class="li"><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng#usage_tips">Usage Tips</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng#confirming_the_card_is_in_monitor_mode">Confirming the Card is in Monitor Mode</a></div></li>
+<li class="level3"><div class="li"><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng#determining_the_current_channel">Determining the Current Channel</a></div></li>
+<li class="level3"><div class="li"><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng#bssids_with_spaces_special_characters">BSSIDs with Spaces, Special Characters</a></div></li>
+<li class="level3"><div class="li"><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng#how_do_i_put_my_card_back_into_managed_mode">How Do I Put My Card Back into Managed Mode?</a></div></li>
+</ul>
+</li>
+<li class="level2"><div class="li"><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng#usage_troubleshooting">Usage Troubleshooting</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng#general">General</a></div></li>
+<li class="level3"><div class="li"><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng#interface_athx_number_rising_ath0_ath1_ath2_ath45">Interface athX number rising (ath0, ath1, ath2.... ath45..)</a></div></li>
+<li class="level3"><div class="li"><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng#interface_ath1_created_instead_of_ath0">Interface ath1 created instead of ath0</a></div></li>
+<li class="level3"><div class="li"><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng#why_do_i_get_ioctl_siocgifindex_failed">Why do I get ioctl(SIOCGIFINDEX) failed?</a></div></li>
+<li class="level3"><div class="li"><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng#error_messagewlanconfigcommand_not_found">Error message: "wlanconfig: command not found"</a></div></li>
+<li class="level3"><div class="li"><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng#airmon-ng_shows_rt2500_instead_of_rt73">airmon-ng shows RT2500 instead of RT73</a></div></li>
+<li class="level3"><div class="li"><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng#error_add_ifacepermission_denied">Error "add_iface: Permission denied"</a></div></li>
+<li class="level3"><div class="li"><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng#check_kill_fails">check kill fails</a></div></li>
+<li class="level3"><div class="li"><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng#siocsifflagsunknown_error_132">SIOCSIFFLAGS: Unknown error 132</a></div></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="airmon-ng">Airmon-ng</h1>
+<div class="level1">
+
+</div>
+
+<h2 class="sectionedit2" id="description">Description</h2>
+<div class="level2">
+
+<p>
+This script can be used to enable monitor mode on wireless interfaces. It may also be used to go back from monitor mode to managed mode. Entering the airmon-ng command without parameters will show the interfaces status.
+</p>
+
+</div>
+
+<h2 class="sectionedit3" id="usage">Usage</h2>
+<div class="level2">
+
+<p>
+usage: airmon-ng &lt;start|stop&gt; &lt;interface&gt; [channel] or airmon-ng &lt;check|check kill&gt;
+</p>
+
+<p>
+Where:<br>
+
+</p>
+<ul>
+<li class="level1"><div class="li">&lt;start|stop&gt; indicates if you wish to start or stop the interface. (Mandatory)<br>
+</div>
+</li>
+<li class="level1"><div class="li">&lt;interface&gt; specifies the interface. (Mandatory)<br>
+</div>
+</li>
+<li class="level1"><div class="li">[channel] optionally set the card to a specific channel.<br>
+</div>
+</li>
+<li class="level1"><div class="li">&lt;check|check kill&gt; “check” will show any processes that might interfere with the aircrack-ng suite.  It is strongly recommended that these processes be eliminated prior to using the aircrack-ng suite.  “check kill” will check and kill off processes that might interfere with the aircrack-ng suite.  For “check kill” see </div>
+</li>
+</ul>
+
+</div>
+
+<h2 class="sectionedit4" id="usage_examples">Usage Examples</h2>
+<div class="level2">
+
+</div>
+
+<h3 class="sectionedit5" id="typical_uses">Typical Uses</h3>
+<div class="level3">
+
+<p>
+To start wlan0 in monitor mode: airmon-ng start wlan0
+</p>
+
+<p>
+To start wlan0 in monitor mode on channel 8: airmon-ng start wlan0 8
+</p>
+
+<p>
+To stop wlan0: airmon-ng stop wlan0
+</p>
+
+<p>
+To check the status: airmon-ng
+</p>
+
+</div>
+
+<h3 class="sectionedit6" id="madwifi-ng_driver_monitor_mode">Madwifi-ng driver monitor mode</h3>
+<div class="level3">
+
+<p>
+This describes how to put your interface into monitor mode.  After starting your computer, enter “iwconfig” to show you the current status of the wireless interfaces.  It likely looks similar the following output.
+</p>
+
+<p>
+Enter “iwconfig”:
+</p>
+<pre class="code"> lo        no wireless extensions.
+ 
+ eth0      no wireless extensions.
+ 
+ wifi0     no wireless extensions.
+ 
+ ath0      IEEE 802.11b  ESSID:""  Nickname:""
+           Mode:Managed  Channel:0  Access Point: Not-Associated   
+           Bit Rate:0 kb/s   Tx-Power:0 dBm   Sensitivity=0/3  
+           Retry:off   RTS thr:off   Fragment thr:off
+           Encryption key:off
+           Power Management:off
+           Link Quality:0  Signal level:0  Noise level:0
+           Rx invalid nwid:0  Rx invalid crypt:0  Rx invalid frag:0
+           Tx excessive retries:0  Invalid misc:0   Missed beacon:0</pre>
+
+<p>
+If you want to use ath0 (which is already used):
+</p>
+
+<p>
+airmon-ng stop ath0 
+</p>
+
+<p>
+And the system will respond:
+</p>
+<pre class="code"> Interface       Chipset         Driver
+ 
+ wifi0           Atheros         madwifi-ng
+ ath0            Atheros         madwifi-ng VAP (parent: wifi0) (VAP destroyed)</pre>
+
+<p>
+Now, if you do “iwconfig”:
+</p>
+
+<p>
+System responds:
+</p>
+<pre class="code"> lo        no wireless extensions.
+ 
+ eth0      no wireless extensions.
+ 
+ wifi0     no wireless extensions.</pre>
+
+<p>
+You can see ath0 is gone.
+</p>
+
+<p>
+To start ath0 in monitor mode: airmon-ng start wifi0
+</p>
+
+<p>
+System responds:
+</p>
+<pre class="code"> Interface       Chipset         Driver
+ 
+ wifi0           Atheros         madwifi-ng
+ ath0            Atheros         madwifi-ng VAP (parent: wifi0) (monitor mode enabled)</pre>
+
+<p>
+Now enter “iwconfig”
+</p>
+
+<p>
+System responds:
+</p>
+<pre class="code"> lo        no wireless extensions.
+ 
+ eth0      no wireless extensions.
+ 
+ wifi0     no wireless extensions.
+ 
+ ath0      IEEE 802.11g  ESSID:""  
+        Mode:Monitor  Frequency:2.452 GHz  Access Point: 00:0F:B5:88:AC:82   
+        Bit Rate=2 Mb/s   Tx-Power:18 dBm   Sensitivity=0/3  
+        Retry:off   RTS thr:off   Fragment thr:off
+        Encryption key:off
+        Power Management:off
+        Link Quality=0/94  Signal level=-96 dBm  Noise level=-96 dBm
+        Rx invalid nwid:0  Rx invalid crypt:0  Rx invalid frag:0
+        Tx excessive retries:0  Invalid misc:0   Missed beacon:0</pre>
+
+<p>
+You can see ath0 is in monitor mode.  Also make sure the essid, nickname and encryption have not been set.  The access point shows the MAC address of the card.  The MAC address of the card is only shown when using the madwifi-ng driver.  Other drivers do not show the MAC address of the card.
+</p>
+
+<p>
+If ath1/ath2 etc. is running then stop them first prior to all the commands above:
+</p>
+<pre class="code"> airmon-ng stop ath1</pre>
+
+<p>
+You can set the channel number by adding it to the end: airmon-ng start wifi0 9
+</p>
+
+</div>
+
+<h3 class="sectionedit7" id="mac80211_drivers_monitor_mode">mac80211 drivers monitor mode</h3>
+<div class="level3">
+
+<p>
+See <a href="http://www.aircrack-ng.org/doku.php?id=install_drivers#mac80211_versus_ieee80211_stacks" class="wikilink1" title="install_drivers">mac80211 versus ieee80211 stacks</a> for some background information.
+</p>
+
+<p>
+When using the mac80211 version of a driver, the use of airmon-ng and the aircrack-ng tools are slightly different.
+</p>
+
+<p>
+Running:
+</p>
+<pre class="code"> airmon-ng start wlan0</pre>
+
+<p>
+Gives something like:
+</p>
+<pre class="code"> Interface   Chipset      Driver
+ 
+ wlan0      Intel 4965 a/b/g/n   iwl4965 - [phy0]
+          (monitor mode enabled on mon0)</pre>
+
+<p>
+Notice that it created “mon0”.  You must then use “mon0” in all the subsequent aircrack-ng tools as the injection interface.
+</p>
+
+<p>
+To remove monitor mode enter:
+</p>
+<pre class="code"> airmon-ng stop mon0</pre>
+
+</div>
+
+<h2 class="sectionedit8" id="usage_tips">Usage Tips</h2>
+<div class="level2">
+
+</div>
+
+<h3 class="sectionedit9" id="confirming_the_card_is_in_monitor_mode">Confirming the Card is in Monitor Mode</h3>
+<div class="level3">
+
+<p>
+To confirm that the card is in monitor mode, run the command “iwconfig”.  You can then confirm the mode is “monitor” and the interface name.
+</p>
+
+<p>
+For the madwifi-ng driver, the access point field from iwconfig shows your the MAC address of the wireless card.
+</p>
+
+</div>
+
+<h3 class="sectionedit10" id="determining_the_current_channel">Determining the Current Channel</h3>
+<div class="level3">
+
+<p>
+To determine the current channel, enter “iwlist &lt;interface name&gt; channel”.  If you will be working with a specific access point, then the current channel of the card should match that of the AP.  In this case, it is a good idea to include the channel number when running the initial airmon-ng command.
+</p>
+
+</div>
+
+<h3 class="sectionedit11" id="bssids_with_spaces_special_characters">BSSIDs with Spaces, Special Characters</h3>
+<div class="level3">
+
+<p>
+See this <a href="http://www.aircrack-ng.org/doku.php?id=faq#how_to_use_spaces_double_quote_and_single_quote_in_ap_names" class="wikilink1" title="faq">FAQ entry</a> on  how to define your BSSID if it has spaces, quotes, double quotes or special characters in it.
+</p>
+
+</div>
+
+<h3 class="sectionedit12" id="how_do_i_put_my_card_back_into_managed_mode">How Do I Put My Card Back into Managed Mode?</h3>
+<div class="level3">
+
+<p>
+It depends on which driver you are using.  For all drivers except madwifi-ng:
+</p>
+<pre class="code">airmon-ng stop &lt;interface name&gt;</pre>
+
+<p>
+For madwifi-ng, first stop ALL interfaces:
+</p>
+<pre class="code">airmon-ng stop athX</pre>
+
+<p>
+Where X is 0, 1, 2 etc.  Do a stop for each interface that iwconfig lists.
+</p>
+
+<p>
+Then:
+</p>
+<pre class="code">wlanconfig ath create wlandev wifi0 wlanmode sta</pre>
+
+<p>
+See <a href="http://madwifi-project.org/wiki/UserDocs/StationInterface" class="urlextern" title="http://madwifi-project.org/wiki/UserDocs/StationInterface" rel="nofollow">madwifi-ng site documentation</a>.
+</p>
+
+<p>
+For mac80211 drivers, nothing has to be done, as airmon-ng keeps the managed interface alongside the monitor mode one (mac80211 uses interface types rather than modes of operation). If you no longer need the monitor interface and want to remove it, use the following:
+</p>
+<pre class="code">airmon-ng stop monX</pre>
+
+<p>
+X is the monitor interface number - 0 unless you run multiple monitoring interfaces simultaneously.
+</p>
+
+</div>
+
+<h2 class="sectionedit13" id="usage_troubleshooting">Usage Troubleshooting</h2>
+<div class="level2">
+
+</div>
+
+<h3 class="sectionedit14" id="general">General</h3>
+<div class="level3">
+
+<p>
+Quite often, the standard scripts on a linux distribution will setup ath0 and or additional athX interfaces.  These must all be removed first per the instructions above.  Another problem is that the script set fields such as essid, nickname and encryptions.  Be sure these are all cleared.
+</p>
+
+</div>
+
+<h3 class="sectionedit15" id="interface_athx_number_rising_ath0_ath1_ath2_ath45">Interface athX number rising (ath0, ath1, ath2.... ath45..)</h3>
+<div class="level3">
+
+<p>
+The original problem description and solution can be found in this <a href="http://forum.aircrack-ng.org/index.php?topic=1641.0" class="urlextern" title="http://forum.aircrack-ng.org/index.php?topic=1641.0" rel="nofollow">forum thread</a>. 
+</p>
+
+<p>
+Problem:
+Every time the command “airmon-ng start wifi0 x” is run, a new interface is created as it should, but there where two problems. The first is that for each time airmon-ng is run on wifi0 the interface number on ath increases: the first time is ath1, the second ath2, the third ath3, and and so on. And this continues so in a short period of time it is up to ath56 and continuing to climb. Unloading the madwifi-ng driver, or rebooting the system has no effect, and the number of the interface created by airmon-ng continues to increase.
+</p>
+
+<p>
+The second problem is that if you run airmon-ng on wifi0 the athXX created does not show as being shown as in Monitor mode, even though it is. This can be confirmed via iwconfig.
+</p>
+
+<p>
+All these problem related to how udev assigns interface names.  The answer is in this ticket: <a href="http://madwifi-project.org/ticket/972#comment:12" class="urlextern" title="http://madwifi-project.org/ticket/972#comment:12" rel="nofollow">http://madwifi-project.org/ticket/972#comment:12</a>  Thanks to lucida. The source of the problem comes from the udev persistent net rules generator.
+</p>
+
+<p>
+Each distro is different… So here is a solution specifically for Gentoo.  You should be able to adapt this solution to your particular distribution.
+</p>
+
+<p>
+Gentoo 2.6.20-r4
+Udev 104-r12
+Madwifi 0.9.3-r2
+Aircrack-ng  0.7-r2
+</p>
+
+<p>
+Solution:
+</p>
+
+<p>
+Change the file /etc/udev/rules.d/75-persistent-net-generator.rules
+</p>
+
+<p>
+From: KERNEL==“eth*|ath*|wlan*|ra*|sta*……..
+To: KERNEL==“eth*|Ath*|wlan*|ra*|sta*…….
+</p>
+
+<p>
+In other words, you just capitalize the a. ath* becomes Ath*. Save the file.
+</p>
+
+<p>
+Now delete the file /etc/udev/rules.d/70-persistent-net.rules.
+</p>
+
+<p>
+Remove the driver and insert back.
+</p>
+
+<p>
+Removing ath also works:
+KERNEL==“eth*|wlan*|ra*|sta*….
+</p>
+
+<p>
+This is also on Gentoo, both 2.6.19-gentoo-r5 and 2.6.20-gentoo-r6
+</p>
+
+<p>
+For Ubuntu, see this <a href="http://forum.aircrack-ng.org/index.php?topic=2674.msg14904#msg14904" class="urlextern" title="http://forum.aircrack-ng.org/index.php?topic=2674.msg14904#msg14904" rel="nofollow">Forum posting</a>.  The modified version of /etc/udev/rules.d/75-persistent-net-generator.rules is:
+</p>
+<pre class="code"> # these rules generate rules for persistent network device naming
+ 
+ ACTION=="add", SUBSYSTEM=="net", KERNEL=="eth*|Ath*|wlan*|ra*|sta*" \
+NAME!="?*", DRIVERS=="?*", GOTO="persistent_net_generator_do"
+ 
+ GOTO="persistent_net_generator_end"
+ LABEL="persistent_net_generator_do"
+ 
+ # build device description string to add a comment the generated rule
+ SUBSYSTEMS=="pci", ENV{COMMENT}="PCI device attr{vendor}:$attr{device}($attr{driver})"
+ SUBSYSTEMS=="usb", ENV{COMMENT}="USB device 0x$attr{idVendor}:0x$attr{idProduct}($attr{driver})"
+ SUBSYSTEMS=="ieee1394", ENV{COMMENT}="Firewire device $attr{host_id})"
+ SUBSYSTEMS=="xen", ENV{COMMENT}="Xen virtual device"
+ ENV{COMMENT}=="", ENV{COMMENT}="$env{SUBSYSTEM} device ($attr{driver})"
+ 
+ IMPORT{program}="write_net_rules $attr{address}"
+ 
+ ENV{INTERFACE_NEW}=="?*", NAME="$env{INTERFACE_NEW}"
+ 
+ LABEL="persistent_net_generator_end"</pre>
+
+</div>
+
+<h3 class="sectionedit16" id="interface_ath1_created_instead_of_ath0">Interface ath1 created instead of ath0</h3>
+<div class="level3">
+
+<p>
+This troubleshooting tip applies to madwifi-ng drivers. First try stopping each VAP interface that is running (“airmon-ng stop IFACE” where IFACE is the VAP name). You can obtain the list from iwconfig. Then do “airmon-ng start wifi0”.
+</p>
+
+<p>
+If this does not resolve the problem then follow the advice in this <a href="http://forum.aircrack-ng.org/index.php?topic=2044.0" class="urlextern" title="http://forum.aircrack-ng.org/index.php?topic=2044.0" rel="nofollow">thread</a>.
+</p>
+
+</div>
+
+<h3 class="sectionedit17" id="why_do_i_get_ioctl_siocgifindex_failed">Why do I get ioctl(SIOCGIFINDEX) failed?</h3>
+<div class="level3">
+
+<p>
+If you get error messages similar to:
+</p>
+<ul>
+<li class="level1"><div class="li"> Error message: “SIOCSIFFLAGS : No such file or directory”</div>
+</li>
+<li class="level1"><div class="li"> Error message: “ioctl(SIOCGIFINDEX) failed: No such device”</div>
+</li>
+</ul>
+
+<p>
+Then <a href="http://www.aircrack-ng.org/doku.php?id=faq#why_do_i_get_ioctl_siocgifindex_failedno_such_device" class="wikilink1" title="faq">See this FAQ entry</a>.
+</p>
+
+</div>
+
+<h3 class="sectionedit18" id="error_messagewlanconfigcommand_not_found">Error message: "wlanconfig: command not found"</h3>
+<div class="level3">
+
+<p>
+If you receive “wlanconfig: command not found” or similar then the wlanconfig command is missing from your system or is not in the the path.  Use locate or find to determine if it is on your system and which directory it is in.
+</p>
+
+<p>
+If it is missing from your system then make sure you have done a “make install” after compiling the madwifi-ng drivers.  On Ubuntu, do “apt-get install madwifi-tools”.
+</p>
+
+<p>
+If it is not in a directory in your path then move it there or add the directory to your path.
+</p>
+
+</div>
+
+<h3 class="sectionedit19" id="airmon-ng_shows_rt2500_instead_of_rt73">airmon-ng shows RT2500 instead of RT73</h3>
+<div class="level3">
+
+<p>
+See this entry under <a href="http://www.aircrack-ng.org/doku.php?id=rt73#airmon-ng_shows_rt2500_instead_of_rt73" class="wikilink1" title="rt73">installing the RT73 driver</a>.
+</p>
+
+</div>
+
+<h3 class="sectionedit20" id="error_add_ifacepermission_denied">Error "add_iface: Permission denied"</h3>
+<div class="level3">
+
+<p>
+You receive an error similar to:
+</p>
+<pre class="code"> Interface       Chipset         Driver
+ 
+ wlan0                   iwl4965 - [phy0]/usr/sbin/airmon-ng: line 338: /sys/class/ieee80211/phy0/add_iface: Permission denied
+                               mon0: unknown interface: No matching device found
+                               (monitor mode enabled on mon0)</pre>
+
+<p>
+or similar to this:
+</p>
+<pre class="code"> wlan0   iwlagn - [phy0]/usr/local/sbin/airmon-ng: 856: cannot create /sys/class/ieee80211/phy0/add_iface: Directory nonexistent
+ Error for wireless request "Set Mode" (8B06) :
+  SET failed on device mon0 ; No such device.
+ mon0: ERROR while getting interface flags: No such device</pre>
+
+<p>
+This means you have an old version of airmon-ng installed. Upgrade to at least v1.0-rc1.  Preferably you should upgrade to the latest SVN version.  See the <a href="http://www.aircrack-ng.org/doku.php?id=install_aircrack" class="wikilink1" title="install_aircrack">installation page</a> for more details.  Also, don't forget you need to be root to use airmon-ng (or use sudo).
+</p>
+
+</div>
+
+<h3 class="sectionedit21" id="check_kill_fails">check kill fails</h3>
+<div class="level3">
+
+<p>
+Distros from now on are going to adopt 'upstart' which is going to replace the /sbin/init daemon which manages services and tasks during boot.
+</p>
+
+<p>
+Basically do:
+</p>
+<pre class="code"> service network-manager stop
+ service avahi-daemon stop
+ service upstart-udev-bridge stop</pre>
+
+<p>
+and then proceed with greping and killing the pids of dhclient and wpa_supplicant.
+</p>
+
+<p>
+This is the only way to kill ALL of the potentially problematic pids for aireplay-ng permanently. The trick is the kill the daemons first and then terminate the 'tasks'.
+</p>
+
+<p>
+Source thread: <a href="http://forum.aircrack-ng.org/index.php?topic=6398.0" class="urlextern" title="http://forum.aircrack-ng.org/index.php?topic=6398.0" rel="nofollow">http://forum.aircrack-ng.org/index.php?topic=6398.0</a> and <a href="http://forum.aircrack-ng.org/index.php?topic=8573" class="urlextern" title="http://forum.aircrack-ng.org/index.php?topic=8573" rel="nofollow">http://forum.aircrack-ng.org/index.php?topic=8573</a>
+</p>
+
+</div>
+
+<h3 class="sectionedit22" id="siocsifflagsunknown_error_132">SIOCSIFFLAGS: Unknown error 132</h3>
+<div class="level3">
+
+<p>
+If you have an output similar to:
+</p>
+<pre class="code"># airmon-ng start wlan0
+Interface	Chipset		Driver
+wlan0		Broadcom	b43 - [phy0]SIOCSIFFLAGS: Unknown error 132
+				(monitor mode enabled on mon0)</pre>
+
+<p>
+It indicates that RF are blocked. It needs to be enabled by using the switch on your laptop and/or using the following command:
+</p>
+<pre class="code">rfkill unblock all</pre>
+
+<p>
+See also <a href="http://ubuntuforums.org/showthread.php?t=1311886" class="urlextern" title="http://ubuntuforums.org/showthread.php?t=1311886" rel="nofollow">http://ubuntuforums.org/showthread.php?t=1311886</a>
+</p>
+
+</div>
+
+                    <!-- wikipage stop -->
+                                    </div>
+
+                <div class="docInfo">airmon-ng.txt · Last modified: 2010/10/31 16:25 by mister_x</div>
+
+                            </div></div><!-- /content -->
+
+            <hr class="a11y">
+
+            <!-- PAGE ACTIONS -->
+            <div id="dokuwiki__pagetools">
+                <h3 class="a11y">Page Tools</h3>
+                <div class="tools">
+                    <ul>
+                        <li><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng&do=edit&rev=0" class="action source" accesskey="v" rel="nofollow" title="Show pagesource [V]"><span>Show pagesource</span></a></li><li><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng&do=revisions" class="action revs" accesskey="o" rel="nofollow" title="Old revisions [O]"><span>Old revisions</span></a></li><li><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng&do=backlink" class="action backlink" rel="nofollow" title="Backlinks"><span>Backlinks</span></a></li><li><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng#dokuwiki__top" class="action top" accesskey="t" rel="nofollow" title="Back to top [T]"><span>Back to top</span></a></li>                    </ul>
+                </div>
+            </div>
+        </div><!-- /wrapper -->
+
+        
+<!-- ********** FOOTER ********** -->
+<div id="dokuwiki__footer"><div class="pad">
+    <div class="license">Except where otherwise noted, content on this wiki is licensed under the following license: <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license" class="urlextern">CC Attribution-Noncommercial-Share Alike 3.0 Unported</a></div>
+    <div class="buttons">
+        <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license"><img src="./airmon-ng [Aircrack-ng]_files/cc-by-nc-sa.png" alt="CC Attribution-Noncommercial-Share Alike 3.0 Unported"></a>        <a href="http://www.dokuwiki.org/donate" title="Donate"><img src="./airmon-ng [Aircrack-ng]_files/button-donate.gif" width="80" height="15" alt="Donate"></a>
+        <a href="http://www.php.net/" title="Powered by PHP"><img src="./airmon-ng [Aircrack-ng]_files/button-php.gif" width="80" height="15" alt="Powered by PHP"></a>
+        <a href="http://validator.w3.org/check/referer" title="Valid HTML5"><img src="./airmon-ng [Aircrack-ng]_files/button-html5.png" width="80" height="15" alt="Valid HTML5"></a>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Valid CSS"><img src="./airmon-ng [Aircrack-ng]_files/button-css.png" width="80" height="15" alt="Valid CSS"></a>
+        <a href="http://dokuwiki.org/" title="Driven by DokuWiki"><img src="./airmon-ng [Aircrack-ng]_files/button-dw.png" width="80" height="15" alt="Driven by DokuWiki"></a>
+    </div>
+</div></div><!-- /footer -->
+
+    </div></div><!-- /site -->
+
+    <div class="no"><img src="http://www.aircrack-ng.org/lib/exe/indexer.php?id=airmon-ng&1395236568" width="2" height="1" alt=""></div>
+    <div id="screen__mode" class="no"></div>    <!--[if ( lte IE 7 | IE 8 ) ]></div><![endif]-->
+
+
+</body></html>
