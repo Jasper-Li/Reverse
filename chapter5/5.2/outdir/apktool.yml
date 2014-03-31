@@ -1,0 +1,13 @@
+version: 1.5.2
+apkFileName: crackme0502.apk
+isFrameworkApk: false
+usesFramework:
+  ids:
+  - 1
+sdkInfo:
+  minSdkVersion: '8'
+  targetSdkVersion: '15'
+packageInfo:
+  cur_package: com.droider.crackme0502
+  orig_package: com.droider.crackme0502
+compressionType: false
