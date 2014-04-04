@@ -12,7 +12,7 @@ import java.util.*;
  * @author Jasper Li
  */
 
-public class print
+public class print_start12
 {
 	public static void main(String[] args) //Static methods are methods that do not operate on objects.
 	{
@@ -28,16 +28,16 @@ public class print
 		int choice = in.nextInt();
 		switch(choice)
 		{
-			case 1:
+			case 12:
 				System.out.println("Hello World!");
 				break;
-			case 2:
+			case 13:
 				System.out.println("I love Java!");
 				break;
-			case 3:
+			case 14:
 				System.out.println("Java is easy!");
 				break;
-			case 4:
+			case 15:
 				break;
 			default:
 				System.out.println("Wrong input!");

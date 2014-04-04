@@ -12,17 +12,17 @@ import java.util.*;
  * @author Jasper Li
  */
 
-public class print
+public class print_random
 {
 	public static void main(String[] args) //Static methods are methods that do not operate on objects.
 	{
 		System.out.println("********** Menu Choose **********");
 		System.out.println("1. print Hello World!");
-		System.out.println("2. print I love Java!");
-		System.out.println("3. print Java is easy!");
+		System.out.println("13. print I love Java!");
+		System.out.println("5. print Java is easy!");
 		System.out.println("4. print nothing."); 
 		System.out.println("********** Menu Choose **********");
-		System.out.print("Select an option (1, 2, 3, 4)\n");
+		System.out.print("Select an option \n");
 		
 		Scanner in = new Scanner (System.in);
 		int choice = in.nextInt();
@@ -31,10 +31,10 @@ public class print
 			case 1:
 				System.out.println("Hello World!");
 				break;
-			case 2:
+			case 13:
 				System.out.println("I love Java!");
 				break;
-			case 3:
+			case 5:
 				System.out.println("Java is easy!");
 				break;
 			case 4:
