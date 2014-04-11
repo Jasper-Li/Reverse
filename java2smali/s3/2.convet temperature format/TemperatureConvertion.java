@@ -1,5 +1,5 @@
 /**
- * The program convert Temperataure in Fahrenheit format into Celsius format.
+ * The program convert Temperataure from Fahrenheit format into Celsius format.
  * The conversion formulae is C = 5 * (F - 32) / 9
  * input is an interger.
  * output is with 2 decimal places.
