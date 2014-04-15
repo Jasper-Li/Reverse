@@ -1,0 +1,151 @@
+### 1.Excercise: Convert Temprature Format from Fahrenheit into Celsius
+
+The conversion fomulae is 
+> C = 5 * (F - 32) / 9
+
+Inputs an integer as temperature.  
+Outuputs has 2 decimal places.
+
+### 2. Java code
+
+	import java.util.*;
+	public class TemperatureConvertion 
+	{
+		public static void main(String[] args)
+		{
+			System.out.println("Input an integer for temperature using fahrenheit format.");
+			Scanner in = new Scanner (System.in);
+			int temp_f = in.nextInt();
+
+			float temp_c = (float) 5 * (temp_f - 32 ) / 9;
+
+			System.out.printf("temp_f = %d, temp_c = %.2f\n", temp_f, temp_c);
+		}
+	}
+
+### 3. Smali Code
+####(1) Get temp_f into v0 register.
+
+    new-instance v0, Ljava/util/Scanner;
+
+    sget-object v1, Ljava/lang/System;->in:Ljava/io/InputStream;
+
+    invoke-direct {v0, v1}, Ljava/util/Scanner;-><init>(Ljava/io/InputStream;)V
+
+    .line 17
+    invoke-virtual {v0}, Ljava/util/Scanner;->nextInt()I
+
+    move-result v0
+
+####(2) Calculte Celsius Formate
+
+The conversion fomulae is 
+> C = 5 * (F - 32) / 9
+
+The Code is below
+
+    .line 19
+    const/high16 v1, 0x40a00000 
+
+    add-int/lit8 v2, v0, -0x20
+
+    int-to-float v2, v2
+
+    mul-float/2addr v1, v2
+
+    const/high16 v2, 0x41100000 
+
+    div-float/2addr v1, v2
+
+According to reading the Java code, this smali code section means 
+> 0x40a00000 * (v0 - 32) / 0x4110000
+
+It corresponds to the Java code below.
+
+>(float) 5 * (temp_f - 32) / 9;
+
+So **0x40a00000** and **0x41100000** is the floating point format of 5 and 9.   
+How these are converted? The answer is below.
+
+
+**A. const/high16 v1 0x40a00000 and floating point format**  
+**operation prototype**: const/high16 vAA, #+BBBB0000
+Move the given literal value (right-zero-extended to 32 bits) into specified register.
+register vAA = #+BBBB0000
+
+If there is a constant, integer types and floating point types are the same.  Only when they are operated, it is the time to distinct them. 
+
+![](file:///media/code/github/reverse/java2smali/Document/sources/s3-2-floating%20point%20format-1.gif)  
+
+When operate div-float instruction, 0x40a0_0000 in v1 register means a floating point number, which is a 32 bit [**Single-precision floating point format**](http://en.wikipedia.org/wiki/Single-precision_floating-point_format)
+The representation of its 32bit is blow:
+
+number:	1 12345678 1234567890 2234567890 123
+digits:	s eeeeeeee mmmmmmmmmm mmmmmmmmmm mmm
+
+s means sign bit.
+e means exponent bit.
+m means mantissa bit.
+
+###equation = (-1)<sup>S</sup> \* 2<sup>E</sup> \* M;
+
+
+Value of s is either 0 or 1.
+
+If **0beeee_eeee = 0b0000_0000**, then
+> ###E = 1 - ( 2 <sup> number_of_e - 1 </sup> - 1) 
+###	= 1 - (2 <sup> number_of_e -1 </sup> - 1)  
+###	= 1 - (2 <sup> 8 - 1 </sup> -1)  
+###	= 1 - 128 + 1  
+###	= -126  
+
+>### M = 0.mmmm mmmm mmmm mmmm mmmm mmm (0b format)  
+
+If **0beeee_eeee = 0b1111_1111**, the constant means a +/- infinity.
+
+If other statment, **0beeee_eeee != 0b0000_0000 && 0beeee_eeee != 0b1111_1111**, then 
+> ###E = e - ( 2 <sup> number_of_e -1 </sup> -1
+###	= e - ( 2 <sup> 8 -1 </sup> -1)  
+###	= e - 2 <sup> 7 </sup> + 1  
+###	= e - 127
+   
+>### M = 1.mmmm mmmm mmmm mmmm mmmm mmm(0b format)  
+
+Now analyze v1 = 0x40a0_0000. First translate the constant into binary format, then into format of 1 bit, 8 bits, 23 bits.
+
+> 0x40a0   
+ = 0b 0100 0000 1010 0000   0000 0000 0000 0000  
+ = 0b 0   1000_0001   0100_0000_0000_0000_0000_000
+
+Calculate the equation as above-mentioned.
+
+> E = (2 ^ 7 + 2)  - 2 ^ 7 
+	= 2    
+> M = 1 + 2 ^(-2)  
+>	= 1.25  
+
+> Equation 	= (-1) ^ S \* 2 ^ E \* M  
+>			= (-1) ^ 0 \* 2 ^ 2 \* 1.25  
+>			= 1 \* 4 \* 1.25  
+>			= 5
+
+**analyzing so much lines is as to demonstrate how the constant 0x40a00000 is the flating point format of 5.**   
+0x4110_0000 is easy to be decoded.
+
+> 0x4110_0000  
+ = 0b 0100 0001 0001 0000 0000 0000 0000 0000  
+ = 0b 0 1000_0010 0010_00....000
+
+> S = 0 
+
+> E = (2^7 + 2^1) - 2^7 + 1  
+    = 2 + 1  
+    = 3  
+
+> M = 1 + 2^(-3)  
+    = 1.125  
+
+> Equation 	= (-1)^S \* 2^E \* M  
+ 			= (-1)^0 \* 2^3 \* 1.125  
+			= 8 * 1.125  
+			= 9
