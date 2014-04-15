@@ -75,7 +75,7 @@ register vAA = #+BBBB0000
 
 If there is a constant, integer types and floating point types are the same.  Only when they are operated, it is the time to distinct them. 
 
-![](file:///media/code/github/reverse/java2smali/Document/s3-2-floating%20point%20format-1.gif)  
+![](file:///media/code/github/reverse/java2smali/Document/sources/s3-2-floating%20point%20format-1.gif)  
 
 When operate div-float instruction, 0x40a0_0000 in v1 register means a floating point number, which is a 32 bit [**Single-precision floating point format**](http://en.wikipedia.org/wiki/Single-precision_floating-point_format)
 The representation of its 32bit is blow:

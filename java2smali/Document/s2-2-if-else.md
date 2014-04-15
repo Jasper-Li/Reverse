@@ -140,7 +140,7 @@ file: ./SmaliOut/LeapYear.smali
 	.end method
 
 ### 2. flowchart
-![](file:///media/code/github/reverse/java2smali/Document/s2-2-if-else-Flowchart.png)
+![](file:///media/code/github/reverse/java2smali/Document/sources/s2-2-if-else-Flowchart.png)
 
 ### 3. use a single if-else statement
 (1) java code
