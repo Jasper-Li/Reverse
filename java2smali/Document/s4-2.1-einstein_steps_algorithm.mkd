@@ -1,0 +1,109 @@
+My English is not wonderful enough to express so complicated things, so use Chinese.
+
+### 1. 练习题
+爱因斯坦台阶问题，有一台阶，  
+二二之数余一，三三之数余二，  
+四四之数余三，五五之数余四，  
+六六之数余五，七七数则恰巧，问台阶数几何？
+
+### 2. 第一反应 · 垃圾的示范
+因为是 7 的倍数，则从 7 + 7i 开始枚举，每次循环检查每个变量是否满足 2，3，4，5，6 的条件。代码如下：
+
+	public class einsteinSteps
+	{
+		public static void main(String[] args)
+		{
+			int length = 0xffff;
+			int test = 0;
+			int i=77;
+			for(; i<= length; i=i+7)
+			
+			{
+				test ++ ;
+					if( i % 3 == 2 )
+					if( i % 4 == 3 )
+					if( i % 5 == 4 )
+					if( i % 6 == 5 )
+					if( i % 7 == 0 )
+					{
+						System.out.println("steps is " + i + ", test times is " + test);
+						//break;
+					}
+			}
+
+			if (i > length)
+				System.out.println("can not found in " + length);
+		}
+	}
+
+输出结果是这样子的，
+> steps is 119, test times is 7  
+steps is 539, test times is 67  
+steps is 959, test times is 127  
+steps is 1379, test times is 187  
+steps is 1799, test times is 247  
+steps is 2219, test times is 307  
+steps is 2639, test times is 367  
+steps is 3059, test times is 427  
+steps is 3479, test times is 487  
+steps is 3899, test times is 547  
+steps is 4319, test times is 607  
+steps is 4739, test times is 667  
+
+查看输出的步数，发现相邻的两个值之间相差 420 ，所以正确的答案是:
+> 119 + 420 * i , i 为正整数
+
+开始在网路上搜索此类问题，知识范畴是**初等数论**中的**解同余式**。  
+网上搜到的一份 PPT 里，显示初等数论是大学课程**信息安全数学基础**里的部分内容。  
+惭愧地认识到自己的浅薄，且行且学习。  
+没有认证看初等数论的书，下面是根据网上搜索的信息，整理的一个通用的算法。
+
+###3. 通用的算法
+1.先考虑只满足 2 个条件的情况  
+要求的条件是, **二二之数余一，三三之数余二。**  
+
+（1）设台阶数为 n, 则有如下等式
+> n % 2 = 1  
+n % 3 = 2  
+
+（2） 2 和 3 的最小公倍数为 6  
+枚举 n % 2 = 1 的整数到比 6 大一些的数值，则是
+>数组 A： 1， 3， 5， 7， 9, 11, 13, 15
+
+对数组 A 的数，挨个做 A % 6 ，得到数组 A‘：
+> 数组 A‘： 1, 3, 5, 1, 3, 5, 1, 3, 5..
+
+可以看出它的值是 1， 3， 5 的循环。
+
+同样枚举 n % 3 = 2 整数得
+> 数组 B：2， 5， 8， 11， 14，17，20，23，
+
+再做运算 B % 6 ，得到数组 B'
+> 数组 B‘: 2, 5, 2, 5, 2, 5, 2, 5
+
+可以看出它是 2， 5 的循环。
+
+对 6 取余的结果中，1，3，5 的循环和 2， 5 的循环里，共同出现的值是 5 。所以要同时满足 n % 2 = 1 和 n % 3 = 2 ，这个整数应该为
+
+> 5 + 6 * i , i 为正整数。
+
+它满足 n % 6 = 5. 
+
+2.考虑满足 3 个条件的情况
+（1）设台阶数为 n ，要求满足
+>n % 2 = 1  
+n % 3 = 2  
+n % 4 = 3  
+
+根据上面的推导，把前 2 个条件 n % 2 = 1 和 n % 3 = 2 合并成
+n % 6 = 5 , 所以满足的 3 个条件等同于满足下面 2 个条件，
+>n % 6 = 5   
+n % 4 = 3 
+
+然后再按照 2 个条件的情况去做合并的，得到一个如下的等式
+>n % X = Y
+
+其中 X Y 均为正整数，X 是 4 和 6 的最小公倍数，Y 就按照 1 中算法求出来的余值。
+
+因为能够合并条件，最终的多个条件可以合并成一个条件，最终满足所有要求的值归类到一个集合中，是一个等差数列。
+>n = X*i + Y (i=0, 1, 2, 3, ...)

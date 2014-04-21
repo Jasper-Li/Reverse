@@ -108,6 +108,35 @@ Move the given literal value (sign-extended to 32 bits) into the specified regis
 vAA = vBB * vCC
 
 ### 4. Flow Chart
-![](file:////media/code/github/reverse/java2smali/Document/sources/s3-3-flowchart.jpg)
+![](https://raw.githubusercontent.com/Jasper-Li/Reverse/master/java2smali/Document/sources/s3-3-flowchart.jpg)
+![](./sources/s3-3-flowchart.jpg)
+
+### 5. Invoke Methods 
+####1. invoke-direct in *.method public constuctor <init>()V*  
+invoke-direct is used to invoke a non-static direct method (that is, an instance method that is by its nature non-overridable, namely either a private instance method or a constructor).  
+Java Code
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+Now java.lang.Object.<init> is a non-static direct method, which is also a constructor.
+
+####2. invoke-static   
+invoke-static is used to invoke a static method (which is always considered a direct method).  
+Java Code
+
+    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+method *java.lang.Interger.valueOf(int i)* is a static method of class *java.lang.Integer*. Its prototype is below:
+
+	public static Integer valueOf(int i);
+
+####3. invoke-virtual  
+invoke-virtual is used to invoke a normal virtual method (a method that is not private, static, or final, and is also not a constructor).  
+Java Code
+
+	invoke-virtual {v3, v4, v5}, Ljava/io/PrintStream;->printf(Ljava/lang/String;[Ljava/lang/Object;)Ljava/io/PrintStream;
+
+java.io.PrintStream.printf() is a normal virtual method. Its prototype is below:
+
+	public PrintStream printf(String format, Object... args)
 
 
