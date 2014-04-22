@@ -1,0 +1,117 @@
+###0. 获取 samli code
+因为使用了 2 个 class, 所以 java 会编译出 2 个 class 文件。  
+在使用 dx 工具生成 dex 文件时，需要引用所有的 .class 文件。  
+整个流程如下：  
+>1. javac einsteinSteps.java  
+2. dx --dex --output=einsteinSteps.dex einsteinSteps.class Formular.class
+3. java -jar /path/to/baksmali.jar -a 19 -o SmaliOut einsteinSteps.dex
+
+###1. 算法 
+2 个数的最小公倍数使用下面这个算法
+> 最小公倍数 = 数1 * 数2 / 最大公约数。
+
+最大公约数使用了欧几里得的辗转相除法
+
+### 2.求最大公约数(Greatest Common Divisor)-欧几里得算法
+Smali Code  
+
+    .method private static GCD(II)I
+		.registers 3
+
+		.prologue
+		.line 46
+		:goto_0
+		if-eqz p1, :cond_7
+
+		.line 48
+		rem-int v0, p0, p1
+
+		move p0, p1
+
+		move p1, v0
+
+		.line 52
+		goto :goto_0
+
+		.line 53
+		:cond_7
+		return p0
+	.end method
+(1)**	.method private static GCD(II)I** 表示函数原型
+> private static int GCD(int p0, int p1)
+
+(2)if-eqz p1, :cond\_7 表示 **if p1==0, jump to :cond\_7**  
+(3)rem-int v0, p0, p1 表示 v0 = p0 % p1  
+转换成 Java 代码如下：
+
+	private static int GCD(int p0, int p1)
+	{
+		if( p1 != 0)
+		{
+			v0 = p0 % p1;
+			p0 = p1;
+			p1 = v0;
+		}
+		return p0;
+	}
+
+###3. 求最小公倍数 (Least Common Multiple)
+Smali Code
+
+	.method private static LCM(II)I
+		.registers 4
+
+		.prologue
+		.line 60
+		mul-int v0, p0, p1
+
+		invoke-static {p0, p1}, LeinsteinSteps;->GCD(II)I
+
+		move-result v1
+
+		div-int/2addr v0, v1
+
+		return v0
+	.end method
+
+(1)mul-int v0, p0, p1 表示 v0 = p0 * p1;  
+(2) 这两句表述为一句： v1 = einsteinSteps.GCD(p0, p1);   
+>invoke-static {p0, p1}, LeinsteinSteps;->GCD(II)I  
+>move-result v1  
+
+(3)div-int/2addr v0, v1 表示 v0 = v0/v1;  
+对应的 Java Code 为
+
+	private static int LCM(int p0, int p1)
+	{
+		v0 = p0, p1;
+		v1 = einsteinSteps.GCD(p0, p1);
+		v0 = v0 / v1;
+		return v0;
+	}
+
+###4. 最初的的 Java Code
+跟刚才分析的 smali 汇编的代码也都能对应的上。
+
+	/**
+	 * Get the greatest common divisor.
+	 */
+	private static int GCD(int dividend, int divisor)
+	{
+		while(divisor != 0)
+		{
+		int temp = dividend % divisor;
+		dividend = divisor;
+		divisor = temp;
+
+		}
+		return dividend;
+	}
+	/**
+	 * Get the least common mutliple.
+	 */
+	private static int LCM(int num1, int num2)
+	{
+		return num1 * num2 / GCD(num1, num2);
+	}
+

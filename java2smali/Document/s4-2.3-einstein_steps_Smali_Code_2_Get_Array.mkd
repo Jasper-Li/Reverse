@@ -1,0 +1,96 @@
+###1. 算法
+在整个过程中，需要实现对 x 的描述。
+> x % A = B 
+
+x 可以为下列数组中的值
+> B, B+A, B+A\*2, B+A\*3, ...
+
+在给出 A， B 和这个数组的长度之后，需要求出这个数组。
+
+###2. Smali Code
+
+	.method private static getArray(III)[I
+		.registers 6
+
+		.prologue
+		.line 69
+		new-array v1, p2, [I #new array vx, size, type_id
+
+		.line 71
+		const/4 v0, 0x0
+
+		:goto_3
+		array-length v2, v1
+
+		if-ge v0, v2, :cond_e
+
+		.line 72
+		mul-int v2, p0, v0
+
+		add-int/2addr v2, p1
+
+		aput v2, v1, v0
+
+		.line 71
+		add-int/lit8 v0, v0, 0x1
+
+		goto :goto_3
+
+		.line 74
+		:cond_e
+		return-object v1
+	.end method
+	f
+(1)	.method private static getArray(III)[I 的表述如下：
+
+    private static int[] getArray(int p0, int p1, int p2)
+
+其中最末尾的 **[I** 表示返回值为数组类型 int[] 。  
+(2) new-array vx,vy,type\_id 
+	vx, array reference.
+	vy, array size, element number.
+	type_id, array element type.
+(3) array-length vx, vy  
+> calculate number of elements of array referenced by vy, puts the value into vx.
+
+(4) if-ge vx, vy, target  
+>jump to target if vx >= vy;
+
+(5) aput vx, vy, vz  
+>puts the value of vx into an integer array.   
+	vy, array reference.  
+	vz, element index.  
+	
+整理成 Java 代码如下：
+
+	private static int[] getArray(int p0, int p1, int p2)
+	{
+		int	v1 = new int[p2];
+		v0 = 0;
+		v2 = v1.length();
+
+		while(v0 < v2)
+		{
+			v2 = p0 * v0;
+			v2 = v2 + p1;
+			
+			v1[v0] = v2;
+			
+			v0=v0 +1;
+			
+			v2 = v1.length();
+		}
+		
+		return v1;
+	}
+###3. 原始的 Java 代码
+
+	private static int[] getArray(int dividend, int divisor, int length)
+	{
+		int[] array = new int[length];
+		
+		for( int i=0; i< array.length; i++)
+			array[i] = divisor + dividend * i;
+
+		return array;
+	}

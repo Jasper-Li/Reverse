@@ -1,0 +1,103 @@
+#s4-2.3-einstein steps Smali Code 3 Foumular Class
+###1. Java Code
+方便处理除数，把算式 
+> x % A = B 
+
+中的 A 和 B 做成一个 Class Formular 中的两个 field, 顺便为加上 constructor 和 assignment method.
+Java Code 如下：
+
+	/**
+	 *  A % B = C.
+	 * The class describe B and C. so A is 
+	 * A = B * i + C (i = 0, 1, 2, ...)
+	 */
+	class Formular
+	{
+		int divisor;
+		int remainder;
+
+		public Formular(int d, int r)
+		{
+			divisor = d;
+			remainder = r;
+		}
+
+		public Formular()
+		{
+			divisor = 0;
+			remainder = 0;
+		}
+	}
+
+###2. Smali Code 
+因为最初的 Java 代码有 2 个 class , 所以在 baksmali -o 标志的文件夹里有 2 个 .smali 文件。
+
+>$ ls SmaliOut
+einsteinSteps.smali  Formular.smali
+
+Foumular.smali 里是 class Formular 的 smali 实现， 源码如下：
+
+	.class LFormular;
+	.super Ljava/lang/Object;
+	.source "einsteinSteps.java"
+
+
+	# instance fields
+	.field divisor:I
+
+	.field remainder:I
+
+
+	# direct methods
+	.method public constructor <init>()V
+		.registers 2
+
+		.prologue
+		const/4 v0, 0x0
+
+		.line 146
+		invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+		.line 147
+		iput v0, p0, LFormular;->divisor:I
+
+		.line 148
+		iput v0, p0, LFormular;->remainder:I
+
+		.line 149
+		return-void
+	.end method
+
+	.method public constructor <init>(II)V
+		.registers 3
+
+		.prologue
+		.line 140
+		invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+		.line 141
+		iput p1, p0, LFormular;->divisor:I
+
+		.line 142
+		iput p2, p0, LFormular;->remainder:I
+
+		.line 143
+		return-void
+	.end method
+
+
+	# virtual methods
+	.method public setDivisorAndRemainder(II)V
+		.registers 3
+
+		.prologue
+		.line 152
+		iput p1, p0, LFormular;->divisor:I
+
+		.line 153
+		iput p2, p0, LFormular;->remainder:I
+
+		.line 154
+		return-void
+	.end method
+
