@@ -1,0 +1,380 @@
+###1.描述
+关键的算法是将 2 个算式合并成一个：
+> X % A1 = B1  
+X % A2 = B2
+
+合并成
+> X % A = B
+
+其中 A 是 A1 和 A2 的最小公倍数。先求出 A  ，再对 B 的求法是  
+（1）通过 2 个算式和 A， 获取到 2 个数组。  
+（2）2 个数组中最小的那个共同有的数字。
+
+A 的算法在 s4-2.3-einstein\_steps\_Smali\_Code\_1\_Least\_Common\_Multiple 里有描述。  
+2 个数组的求法在 s4-2.3-einstein\_steps\_Smali\_Code\_2\_Get\_Array 里有描述。
+
+本次描述的函数名称是 mergeTwoFormulars, 是用来合并 2 个算式为 1 个。  
+在 java 代码中，会调用到求最小公倍数的函数 
+> private static int LCM(int num1, int num2)
+
+和求数组的函数
+>private static int[] getArray(int dividend, int divisor, int length)
+
+最后寻找最小的共同拥有的数字，这个算法也在本函数里实现。
+
+
+###2. Smali Code
+跟本节有关的 smali 源码
+
+	.method private static mergeTwoFormulars(LFormular;LFormular;)LFormular;
+		.registers 11
+
+		.prologue
+		const/4 v1, 0x0
+
+		##### 1. Get LCM of 2 divisor and save into v0
+		.line 96
+		new-instance v4, LFormular;
+
+		invoke-direct {v4}, LFormular;-><init>()V
+
+		.line 98
+		iget v0, p0, LFormular;->divisor:I
+
+		iget v2, p1, LFormular;->divisor:I
+
+		invoke-static {v0, v2}, LeinsteinSteps;->LCM(II)I
+
+		move-result v0
+
+		iput v0, v4, LFormular;->divisor:I
+
+		#### 2.get array1 and save into v5
+		.line 99
+		iget v0, v4, LFormular;->divisor:I
+
+		iget v2, p0, LFormular;->divisor:I
+
+		div-int/2addr v0, v2
+
+		.line 100
+		iget v2, p0, LFormular;->divisor:I
+
+		iget v3, p0, LFormular;->remainder:I
+
+		invoke-static {v2, v3, v0}, LeinsteinSteps;->getArray(III)[I
+
+		move-result-object v5
+
+		#### 3. get array2 and save into v6
+		.line 104
+		iget v0, v4, LFormular;->divisor:I
+
+		iget v2, p1, LFormular;->divisor:I
+
+		div-int/2addr v0, v2
+
+		.line 105
+		iget v2, p1, LFormular;->divisor:I
+
+		iget v3, p1, LFormular;->remainder:I
+
+		invoke-static {v2, v3, v0}, LeinsteinSteps;->getArray(III)[I
+
+		move-result-object v6
+
+		### 4. get the smallest common number in both of  array1 in v5 and array2 in v6.
+		move v0, v1
+
+		move v2, v1
+
+		.line 110
+		:goto_2c
+		array-length v3, v5
+
+		if-ge v0, v3, :cond_3d
+
+		move v3, v1
+
+		.line 112
+		:goto_30
+		array-length v7, v6
+
+		if-ge v3, v7, :cond_3b
+
+		.line 116
+		aget v7, v5, v0
+
+		aget v8, v6, v3
+
+		if-ne v7, v8, :cond_40
+
+		.line 117
+		aget v2, v5, v0
+
+		.line 124
+		:cond_3b
+		if-eqz v2, :cond_49
+
+		.line 127
+		:cond_3d
+		iput v2, v4, LFormular;->remainder:I
+
+		.line 129
+		return-object v4
+
+		.line 120
+		:cond_40
+		aget v7, v5, v0
+
+		aget v8, v6, v3
+
+		if-lt v7, v8, :cond_3b
+
+		.line 112
+		add-int/lit8 v3, v3, 0x1
+
+		goto :goto_30
+
+		.line 110
+		:cond_49
+		add-int/lit8 v0, v0, 0x1
+
+		goto :goto_2c
+	.end method
+####2.1 Get LCM of 2 divisor and save into v0
+**2.1.1 smali code**
+
+		.line 96
+		new-instance v4, LFormular;
+
+		invoke-direct {v4}, LFormular;-><init>()V
+
+		.line 98
+		iget v0, p0, LFormular;->divisor:I
+
+		iget v2, p1, LFormular;->divisor:I
+
+		invoke-static {v0, v2}, LeinsteinSteps;->LCM(II)I
+
+		move-result v0
+
+		iput v0, v4, LFormular;->divisor:I
+
+**2.1.2  iget v0, p0, LFormular;->divisor:I**  
+prototype: iget vx, vy, field\_id  
+Description: vx = vy.field\_id
+
+**2.1.3 iput v0, v4, LFormular;->divisor:I**  
+prototype: iput vx, vy, field\_id  
+Description: vy.field\_id = vx;
+
+**2.1.4 伪代码表示**
+
+	private static Formular mergeTwoFormualrs(Formular p0, Formular p1)
+	{
+		v1 = 0;
+		Formular v4 = new Formular();
+		
+		v0 = p0.divisor;
+		v2 = p1.divisor;
+		v0 = einsteinSteps.LCM(v0, v2);
+
+		...
+	}
+
+#### 2.2 get array1 and save into v5
+伪代码
+
+	v0 = v4.divisor; // LCM
+	v2 = p0.divisor;
+	v0 = v0 / v2;	// length of array
+
+	v5 = einsteinSteps.getArray(p0.divisor, p0.remainder, v0);
+
+#### 2.3 get array2 and save into v6
+
+	v0 = v4.divisor; // LCM
+	v2 = p1.divisor; 
+	v0 = v0 / v2;
+
+	v6 = einsteinSteps.getArray(p1.divisor, p1.remainder, v0);
+	
+#### 2.4 get the smallest common number in both of array1 and array2
+#####2.4.1 smali code
+
+		### 4. get the smallest common number in both of  array1 in v5 and array2 in v6.
+		move v0, v1
+
+		move v2, v1
+
+		.line 110
+		:goto_2c
+		array-length v3, v5
+
+		if-ge v0, v3, :cond_3d
+
+		move v3, v1
+
+		.line 112
+		:goto_30
+		array-length v7, v6
+
+		if-ge v3, v7, :cond_3b
+
+		.line 116
+		aget v7, v5, v0
+
+		aget v8, v6, v3
+
+		if-ne v7, v8, :cond_40
+
+		.line 117
+		aget v2, v5, v0
+
+		.line 124
+		:cond_3b
+		if-eqz v2, :cond_49
+
+		.line 127
+		:cond_3d
+		iput v2, v4, LFormular;->remainder:I
+
+		.line 129
+		return-object v4
+
+		.line 120
+		:cond_40
+		aget v7, v5, v0
+
+		aget v8, v6, v3
+
+		if-lt v7, v8, :cond_3b
+
+		.line 112
+		add-int/lit8 v3, v3, 0x1
+
+		goto :goto_30
+
+		.line 110
+		:cond_49
+		add-int/lit8 v0, v0, 0x1
+
+		goto :goto_2c
+#####2.4.2 some key opcodes
+(1)array-length v3, v5  
+prototype: array-length vx, vy  
+Description: 
+
+    vx = vy.length(); // vy is a reference of an array.
+
+(2)if-ge v0, v3, :cond\_3d  
+prototype: if-ge vx, vy, target  
+Description: Jump to target if vx>= vy
+
+(3) aget vx, vy, vz  
+Description: vx = vy[vz];
+
+(4) 2.4.4 if-ne vx, vy, target  
+Descritpion: Jump to targe if vx != vy
+
+(5) if-eqz vx, target  
+Description: Jump to target if vx == 0
+
+(6) if-lt vx, vy, target  
+Description: Jump to target, if vx < vy
+
+####2.4.3 直接翻译的伪代码
+	
+	v0 = v1; // v1 = 0 in begining, initial v0 = 0.
+	v2 = v1;
+
+	:goto_2c
+	v3 = v5.length();
+
+	if( v0 >= v3)
+		goto :cond_3d;
+
+	v3 = v1; // v3 = 0;
+
+	:goto_30
+	v7 = v6.length();
+	
+	if(v3 >= v7)
+		goto :cond_3b 
+
+	v7 = v5[v0];
+	v8 = v6[v3];
+
+	if (v7 != v8)
+		goto :cond_40
+	
+	v2 = v5[v0];
+
+	:cond_3b
+	if(v2 == 0)
+		goto :cond_49
+	
+	:cond_3d
+	v4.remainder = v2;
+	return v4;
+
+	:cond_40
+	v7 = v5[v0];
+	v8 = v6[v3];
+	
+	if(v7 < v8)
+		goto :cond_3b;
+	v3 ++;
+	goto :goto_30;
+
+	:cond_49
+	v0 ++;
+	goto :goto_2c
+
+####2.4.4 整理后的伪代码
+
+	for(v0 = 0; v0 < v5.length(); v0++) 
+	{
+		for(v3 = 0; v3 < v6.length; v3++)
+		{
+			if(v5[v0] == v6[v3])
+			{	
+				v2 = v5[v0];
+				break;
+			}
+			else
+				if(v5[v0] < v6[v3])
+				break;
+		}
+
+		if(v2 != 0)
+			break;
+		
+	}
+	v4.remainder = v2;
+	return v4;
+
+####2.4.5 Java 源码 - 求最小的共有数
+
+		int remainder=0;
+		for(int i=0; i<array1.length; i++)
+		{
+			for(int j=0; j<array2.length; j++)
+			{
+				if(array1[i] == array2[j])
+				{	
+					remainder = array1[i];
+					break;
+				}
+				if(array1[i] < array2[j])
+					break;
+			}
+
+			if(remainder !=0 )
+				break;
+		}
+		result.remainder =remainder;
+		return result;
+
+

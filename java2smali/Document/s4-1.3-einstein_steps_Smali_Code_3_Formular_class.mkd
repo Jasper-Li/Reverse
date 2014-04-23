@@ -32,7 +32,7 @@ Java Code 如下：
 ###2. Smali Code 
 因为最初的 Java 代码有 2 个 class , 所以在 baksmali -o 标志的文件夹里有 2 个 .smali 文件。
 
->$ ls SmaliOut
+>$ ls SmaliOut  
 einsteinSteps.smali  Formular.smali
 
 Foumular.smali 里是 class Formular 的 smali 实现， 源码如下：
@@ -100,4 +100,39 @@ Foumular.smali 里是 class Formular 的 smali 实现， 源码如下：
 		.line 154
 		return-void
 	.end method
+#### (1) Constructor: \<init\>()V
+> iput v0, p0, LFormular;->divisor:I  
 
+prototype: **iput vx, vy, field\_id**  
+Description: Puts vx into an instance field, The instance is referenced by vy.  
+伪代码表示：
+
+	public void Formular()
+	{
+		v0 = 0;
+		p0.java.lang.Object.init();
+
+		(int) p0.divisor = v0;
+		(int) p0.remainder = v0;
+	}
+
+####(2) Constructor:  \<init\>(II)V
+伪代码：
+
+	public void Formular(int p1, int p2)
+    {
+    	p0.java.lang.Object.init();
+    	
+    	(int) p0.divisor = p1;
+    	(int) p0.remaindeer = p2;
+    }
+
+####(3) Virtual Method: *setDivisorAndRemainder(II)V*
+
+伪代码：
+
+	public void setDivisorAndRemainder(int p1, int p2) 
+	{
+		(int) p0.divisor = p1;
+		(int) p0.remainder = p2;
+	}

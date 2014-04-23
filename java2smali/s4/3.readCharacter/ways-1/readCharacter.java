@@ -1,7 +1,7 @@
 /**
  * Read a character from console. 
  * If encountered 'e' or 'E', quit.
- * Accomplish it in two ways. This is the 1st ways that uses BufferedReader.
+ * Accomplish it in two ways. This is the 1st way that uses BufferedReader.
  *
  * 
  * 1. InputStreamReader:

@@ -1,7 +1,7 @@
 /**
  * Read a character from console. 
  * If encountered 'e' or 'E', quit.
- * Accomplish it in two ways. This is the 1st ways that uses (InputStream) System.in.
+ * Accomplish it in two ways. This is the 2nd way that uses (InputStream) System.in.
  *
  * 
  * 1. InputStreamReader:
