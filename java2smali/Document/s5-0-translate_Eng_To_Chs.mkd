@@ -1,0 +1,16 @@
+###1. Traslate contents below, and write it on the notebook.
+Standard I/O
+The term standard I/O refers to the Unix concept (which is reproduced in some form in Windows and many other operating systems) of a single stream of information that is used by a program. All the programs input can come from standard input, all its output can go to standard output, and all of its error messages can be sent to standard error. The value of standard I/O is that programs can easily be chained together, and one programs standard output can become the standard input for another program. This is a powerful tool. 
+
+**Words**  
+(1) term  
+ a word or phrase used to describe a thing or to express a concept.   
+(2) reproduce  
+produce a copy of sth.
+###2. Translation outs
+标准输入/输出
+“标准输入/输出”，是指 Unix 内容中的被程序使用的一单串信息，在 Windows 和许多其它操作系统中也被借用。
+所有程序的输入可来自标准输入，所有输出可流向标准输出，所有错误信息可发送到标准错误。
+标准输入/输出的值，可以串起彼此的程序。一个程序的标准输出，可以成为另一个程序的标准输入。它是一个强大的工具。
+
+
