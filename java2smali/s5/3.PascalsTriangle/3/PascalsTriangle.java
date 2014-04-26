@@ -2,6 +2,12 @@
  * Description: Print Pascal's Triangle, given line numbers.
 // (1) Binomial 
 // (2) Coefficient 
+//
+ *	Beacause this program is based on the Int format value. 
+ *	Integer.MAX = 2147483647
+ *	C(16,33) = C(17,33) = 1166803110
+ *
+ *	The max lines is 34, otherwise the negative number will be encounted.
  *
  * Algorithm of this one, whine line = 20, It doesn't work;
  * @version 1.0 2014-04-24
@@ -15,12 +21,11 @@ public class PascalsTriangle
 
 	public static void main(String[] args)
 	{
-		/*
-		System.out.println("Input lines:");
+/*		System.out.println("Input lines(max 34):");
 		Scanner in = new Scanner(System.in);
 		int line = in.nextInt();
-		*/
-		int line=30;
+*/
+		int line=34;
 		int maxNum = binomialCoefficient(line-1, line/2);
 		ElementLength = DigitLength(maxNum);
 		

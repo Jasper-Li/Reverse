@@ -8,7 +8,7 @@ public class SumOfEvenNumber
 {
 	public static void main(String[] args)
 	{
-		int sum = 0;
+		long sum = 0;
 		for(int num=0; num <= 10000; num +=2)
 			sum += num;
 

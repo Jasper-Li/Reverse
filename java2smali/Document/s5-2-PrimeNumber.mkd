@@ -1,0 +1,207 @@
+###1. Exercise
+Print all the **prime number** ranged from 100 to 200.  
+Use nested for statement.
+###2. Smali Code of main method
+	.method public static main([Ljava/lang/String;)V
+		.registers 8
+
+		.prologue
+		const/4 v3, 0x1
+
+		const/4 v2, 0x0
+
+		const/16 v0, 0x64
+
+		move v4, v0
+
+		move v1, v2
+
+		:goto_6					##loop level 1, judgment when v4<=v0;
+		const/16 v0, 0xc8
+
+		if-gt v4, v0, :cond_47
+
+		const/4 v0, 0x2			## loop level 2, initial v0 = 2
+
+		:goto_b
+		int-to-double v5, v4	## v5 = (int) Math.sqrt(v4);
+
+		invoke-static {v5, v6}, Ljava/lang/Math;->sqrt(D)D
+
+		move-result-wide v5
+
+		double-to-int v5, v5
+
+		if-gt v0, v5, :cond_4f	##loop level 2, judgment when v0<v5
+
+		rem-int v5, v4, v0
+
+		if-nez v5, :cond_44 	## go back to loop level 2 ,if v5 !=0
+
+		move v0, v2	##v0=v2=0;
+
+		:goto_18
+		if-ne v0, v3, :cond_4d	##  if v0!=v3, jump out of loop 2 
+
+		##code omit, System.out.printf("%d ", v4);
+	
+		##code  if(v1 % 5 == 0) System.out.println();
+		add-int/lit8 v0, v1, 0x1
+		rem-int/lit8 v1, v0, 0x5
+		if-nez v1, :cond_3f
+		sget-object v1, Ljava/lang/System;->out:Ljava/io/PrintStream;
+		invoke-virtual {v1}, Ljava/io/PrintStream;->println()V
+
+		:cond_3f
+		:goto_3f
+		add-int/lit8 v1, v4, 0x1  ## loop 1, value (judged) ++;
+
+		move v4, v1
+
+		move v1, v0
+
+		goto :goto_6			## loop 1, loop back 
+
+		:cond_44
+		add-int/lit8 v0, v0, 0x1
+
+		goto :goto_b
+
+		:cond_47 ##println(); return void;
+		sget-object v0, Ljava/lang/System;->out:Ljava/io/PrintStream;
+
+		invoke-virtual {v0}, Ljava/io/PrintStream;->println()V
+
+		return-void
+
+		:cond_4d
+		move v0, v1
+
+		goto :goto_3f
+
+		:cond_4f
+		move v0, v3
+
+		goto :goto_18
+	.end method
+
+####2.1 Key opcodes
+**if-ne vx, vy, targe**  
+Jump to targe if vx != vy.
+
+####2.2 Preliminary smali code
+	v3 = 1;
+	v2 =0 
+	v0 =100;
+
+	v4 = 100;
+	v1 = 0;
+
+	:goto_6
+	if(v4 > 200) 
+		goto :cond_47;
+	
+	v0 = 2;
+	v5 = (int) Math.sqrt(v4);
+	if(v0 > v5)
+		goto :cond_4f;
+
+	v5 = v4 % v0;
+
+	if(v5 != 0) :cond_44
+	
+	v0 = 0;
+	
+	:goto_18
+	if( v0 != 1) :cond_4d
+	
+	System.out.printf("%d ", v4);
+
+	v0 = v1 +1;
+	if( v0 % 5 != 0) :cond_3f
+	
+	System.our.println();
+
+	:cond_3f
+	:goto_3f
+	v4++;
+	v1 = v0;
+	goto :goto_6
+
+	:cond_44
+	v0++;
+	goto :goto_b
+
+	:cond_47
+	System.out.println();
+	return void;
+
+	:cond_4d
+	v0 = v1;
+	goto :goto_3f
+
+	:cond_4f
+	v0 = 1; 
+	goto :goto_18
+####2.3 FlowChart
+path: ./sources/s5-2-PrimeNumber.jpg  
+
+![./sources/s5-2-PrimeNumber.jpg](./sources/s5-2-PrimeNumber.jpg)
+![./sources/s5-2-PrimeNumber.jpg].(https://raw.githubusercontent.com/Jasper-Li/Reverse/master/java2smali/Document/sources/s5-2-PrimeNumber.jpg)
+####2.4 Simplify smali code
+	
+	public static void main(String[] args)
+	{
+		v1 = 0;
+		for(v4 = 100; v4 <= 200; v4++)
+		{
+			
+			for(v0 = 2; v0 <= Math.sqrt(v4); v0 ++)
+			{
+				if( (v4 % v0) == 0)
+				{ 
+					v0 = 0;
+					goto :goto_18;
+				}
+			}
+			v0 =1;
+
+		:goto\_18
+			if(v0==1)
+			{
+				System.out.printf("%d ", v4);
+				
+				v1= v1 + 1;
+				if(v1 % 5 ==0)
+					System.out.println();
+			}
+		}
+		System.our.println();
+	}
+
+####2.5 Java code
+	
+	public static void main(String[] args)
+	{
+		int num = 0;
+		for(int i=100; i<= 200; i++)
+		{
+			boolean flag = true;
+			
+			for(int j=2; j<= (int) Math.sqrt(i); j++)
+					if( i % j ==0)
+					{
+						flag = false;
+						break;
+					}
+			
+			if(flag == true)
+			{
+				System.out.printf(i + " ");
+				num ++;
+				if(num % 5 == 0)
+					System.out.println();
+			}
+		}
+		System.out.println();
+	}
