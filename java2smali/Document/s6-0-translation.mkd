@@ -1,0 +1,32 @@
+### Translate the below into Chinese.
+> Reading from standard input
+Following the standard I/O model, Java has System.in, System.out, and System.err. Throughout this book, you’ve seen how to write to standard output using System.out, which is already prewrapped as a PrintStream object. System.err is likewise a PrintStream, but System.in is a raw InputStream with no wrapping. This means that although you can use System.out and System.err right away, System.in must be wrapped before
+you can read from it.
+
+### 译文
+接章节“标准输入/输出"，Java 语言有 System.in, System.out, System.error. 纵观本书，可见用 System.out 写向标准输出，System.out 已经被 PrintStream 预先封装了。System.err 也类似 PrintStream, 但System.in 是一个未被封装的 raw InputStream 。尽管我们信手拈来 System.out 和 System.err， 但必须封装了 System.in 才能使用。
+你能从 System.in 里读取点东西。
+
+### others
+####1. System.in.read
+	class system
+	{
+		//fields
+		static InputStream in;
+		static PrintStream err;
+		static PrintStream out;
+	}
+	
+	class InputStream
+	{
+		//method
+		abstract int read();//read next byte of data from the input stream.
+	}
+####2. BufferedReader
+	class BufferedReader
+	{
+		//method
+		String readLine(); //Reads a line of text.
+	}
+
+
